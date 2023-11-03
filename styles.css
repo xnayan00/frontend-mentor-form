@@ -1,0 +1,187 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('./assets/fonts/Roboto-Regular.ttf');
+}
+@font-face {
+    font-family: 'Roboto Bold';
+    src: url('./assets/fonts/Roboto-Bold.ttf');
+}
+
+:root {
+    --Primary: hsl(4, 100%, 67%);
+    --Secondary: hsl(350, 100%, 67%);
+    --Dark-Slate-Grey: hsl(234, 29%, 20%);
+    --Charcoal-Grey: hsl(235, 18%, 26%);
+    --Grey: hsl(231, 7%, 60%);
+    --White: hsl(0, 0%, 100%);
+}
+
+::selection {
+    background: var(--Primary);
+    color: var(--Dark-Slate-Grey);
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body, html {
+    font-family: 'Roboto', sans-serif;
+    color: var(--Dark-Slate-Grey);
+    background: var(--Dark-Slate-Grey);
+}
+
+.d-none {
+    display: none!important;
+}
+
+.l-main {
+    background: var(--White);
+    min-height: 100vh;
+
+}
+
+.l-main__image {
+    min-height: clamp(200px, 30vh, 350px);
+    width: 100%;
+    background:
+        url('./assets/images/illustration-sign-up-mobile.svg') no-repeat bottom center;
+        background-size: cover;
+}
+
+.l-main:has(.l-success__content[data-visible="true"]) .l-main__image {
+    display: none;
+}
+
+.l-main__content, .l-success__content {
+    padding: 0 1.2rem;    
+}
+
+.l-success__content {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem
+}
+
+.c-title {
+    font-size: 3rem;
+    margin: 1rem 0;
+}
+
+.c-text {
+    font-size: 1rem;
+    line-height: 1.5em;
+}
+
+.c-list {
+    list-style: none;
+    padding: 1.2rem 0;
+}
+
+.c-list__item {
+    padding: 0.3em 0;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.c-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 1rem 0;
+}
+
+.c-form__group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+}
+
+.c-form__label {
+    font-size: 0.8em;
+    font-weight: bold;
+}
+.c-form__label-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.c-form__button--large {
+    width: 100%;
+}
+
+.c-form__hint {
+    color: var(--Primary);
+    font-size: 0.8em;
+    display: none;
+}
+
+.c-form__group:has(.c-form__input:not(:placeholder-shown):invalid) .c-form__hint {
+    display: inline-flex;
+}
+
+.c-form__input:not(:placeholder-shown):invalid {
+    border-color: var(--Primary);
+    color: var(--Primary);
+}
+
+.c-form__input, .c-form__input:focus {
+    border-radius: 0.5em;
+    border: 1px solid var(--Grey);
+    outline: none;
+    color: var(--Charcoal-Grey);
+    padding: 1.2em 1.5em;
+}
+
+.c-form__button {
+    color: var(--White);
+    background: var(--Dark-Slate-Grey);
+    padding: 1.2em 1.5em;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    border-radius: 0.5em;
+    transition: all .3s;
+}
+.c-form__button:hover {
+    background: var(--Primary);
+}
+
+@media screen and (min-width: 1200px) {
+    body {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+    }
+    .l-main {
+        display: flex;
+        min-height: auto;
+        border-radius: 1.2rem;
+        padding: 1rem;
+        width: auto;
+        min-width: 400px;
+        max-width: 800px
+    }
+    .l-success__content {
+        min-height: auto;
+        border-radius: 1.2rem;
+        padding: 1rem;
+        width: 400px;
+    }
+    .l-main__image {
+        background: url('./assets/images/illustration-sign-up-desktop.svg') no-repeat center right;
+        background-size: cover;
+        order: 2;
+        width: 400px;
+        border-radius: 1rem;
+    }
+    .l-main__content {
+        order: 1;
+        align-self: center;
+    }
+}
